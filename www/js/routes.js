@@ -127,6 +127,17 @@ var app = new Framework7({
 
           //ESCUTAR QUANDO MUDAR DE OFFLINE PARA ONLINE
           document.addEventListener("online", onOnline, false);
+          document.addEventListener("offline", onOffline, false);
+
+          //QUANDO ESTIVER ONLINE					
+          function onOffline() {
+            //ESCONDER O CARD "SEM INTERNET" 
+            $("#semInternet").removeClass("display-none");
+            //REMOVE PRELOADER E NOTIFICAÇÃO DE CARREGANDO
+            app.preloader.hide();
+            navigator.notification.activityStop();
+            ref.close();
+          };
 
           //QUANDO ESTIVER ONLINE					
           function onOnline() {
